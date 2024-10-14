@@ -42,7 +42,7 @@ def test_m_vm(m: str, soft: str, vm_name: str, detail: bool=True) -> int:
         print(e)
 
 
-# print(test_m_vm("m1", "vb", "Win7", detail=False))
+# print(test_m_vm("m1", "vmware", "Win8", detail=True))
 
 
 def test_m_pm(m:str, detail:bool) -> int:
@@ -52,7 +52,7 @@ def test_m_pm(m:str, detail:bool) -> int:
     :param detail: detailed output
     :return: 0 if physical machine, 1 if virtual machine
     """
-    print(f"Testing method {m} on this machine:")
+    print(f"Testing method {m} on this machine:\n")
     try:
         output = subprocess.run([dt.EXE_PATH + m + ".exe"], capture_output=True, text=True)
         if detail:
@@ -60,6 +60,5 @@ def test_m_pm(m:str, detail:bool) -> int:
         return output.returncode
     except Exception as e:
         print(e)
-
 
 # print(test_m_pm("m1", False))
