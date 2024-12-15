@@ -1,0 +1,59 @@
+consts:
+    DELAY: 30 # delay after the virtual machine has started
+
+# logging configuration
+version: 1
+
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG # logging level
+    formatter: simple
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.FileHandler
+    level: INFO
+    formatter: simple
+    filename: app.log
+
+loggers:
+  test_logger:
+    level: INFO
+    handlers: [console, file]
+
+# paths
+paths:
+    EXE_PATH : "../exe/"
+    VBOXMANAGE_PATH : "C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe"  # This is the default VirtualBox installation path. Adjust if needed
+    VMRUN_PATH : "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe"  # This is the default VMware installation path. Adjust if needed
+
+# Installed Virtual Machines configuration
+# Please provide the username and password of each Virtual Machine administrator session
+# If the Virtual Machine is installed on VMware, please provide the path to vmx file as well
+vm :
+    vb:
+        # Your virtual Machines installed on VirtualBox here
+        Win7:
+            user: user # user
+            password: password # password
+        Win8:
+            user: vboxuser
+            password: changeme
+    vmware:
+        # Your virtual Machines installed on VirtualBox here
+        Win8:
+            user: adkh
+            password: password
+            path: # the path to this virtual (.vmx) machine here
+
+# Methods to be tested
+# In order to test a method, make sure:
+## The method executable has the same name as the method
+## The executable is in the exe folder
+m:
+    m1: Searching for Virtualization signs in the System and System\BIOS Windows Registry
