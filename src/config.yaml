@@ -1,5 +1,5 @@
 consts:
-  DELAY: 15  # Delay (in seconds) applied after the virtual machine has started
+  DELAY: 40  # Delay (in seconds) applied after the virtual machine has started
 
 # Logging configuration
 version: 1
@@ -28,7 +28,7 @@ loggers:
 
 # File paths configuration
 paths:
-  EXE_PATH: "./src/exe/" # Do not change this path!
+  EXE_PATH: "./exe/" # Do not change this path!
   VBOXMANAGE_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe"  # Default VirtualBox installation path; adjust if necessary
   VMRUN_PATH: "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe"  # Default VMware Workstation installation path; adjust if necessary
 

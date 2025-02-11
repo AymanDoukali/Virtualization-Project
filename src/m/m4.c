@@ -40,7 +40,7 @@ int main()
     // Virtualization detection threshold
     if (average_cycles > 10000)
     { // Adjust the threshold based on your environment
-        printf("Detected virtualization (higher CPUID overhead).\n");
+        printf("THIS IS A VIRTUAL MACHINE.\n");
         return 0;
     }
     else

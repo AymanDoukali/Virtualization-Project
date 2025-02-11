@@ -31,12 +31,12 @@ int main()
     // Virtualization detection threshold
     if (average_cycles > 65)
     { // Adjust threshold based on tests
-        printf("Detected virtualization (linux vm or vmware suspend).\n");
+        printf("THIS IS A VIRTUAL MACHINE (linux vm or vmware suspend).\n");
         return 0;
     }
     else
     {
-        printf("No virtualization detected.\n");
+        printf("This method cannot decide whether this is a virtual machine.\n");
         return 1;
     }
 }

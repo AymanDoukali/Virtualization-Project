@@ -3,7 +3,7 @@ import yaml
 import subprocess
 import time
 import logging.config
-from src.VirtualMachine import VirtualMachine
+from src.VirtualMachine import VirtualMachine, VMwareVM
 
 # Load configuration from YAML file
 CONFIG_PATH = 'config.yaml'
@@ -61,11 +61,12 @@ def test_m_vm(m: str, vm: VirtualMachine) -> int:
         logger.info("Running executable on virtual machine...")
         output = vm.run_on_vm(guest_path)
         logger.debug(output.stdout)
+        logger.debug("return code " + str(output.returncode))
 
         logger.info("Saving virtual machine state...")
         vm.save_state()
 
-        return output.returncode
+        return output.stdout
     except Exception as e:
         logger.error(f"Error while testing {m} on VM: {e}")
         return -1
@@ -95,8 +96,9 @@ def test_m_list_vm(m_list: list[str], vm: VirtualMachine) -> list[str]:
             vm.copy_to_vm(host_path, guest_path)
             output = vm.run_on_vm(guest_path)
             logger.debug(output.stdout)
+            logger.debug("return code " + str(output.returncode))
 
-            if output.returncode == 0:
+            if "THIS IS A VIRTUAL MACHINE" in output.stdout or output.returncode == 0:
                 logger.info(f"{m} detected virtualization on {vm.name} ({vm.soft})")
                 detected_methods.append(m)
             else:

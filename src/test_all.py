@@ -90,4 +90,3 @@ def test_all():
     with open('test_result.json', 'w') as json_file:
         json.dump(data_test, json_file, indent=4)
 
-# test_all_m_on_all_vm()

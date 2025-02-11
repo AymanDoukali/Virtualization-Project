@@ -50,7 +50,7 @@ int main()
   }
   else
   {
-    printf("The program is running on a virtual machine.\n");
+    printf("THIS IS A VIRTUAL MACHINE.\n");
     return 0;
   }
 }

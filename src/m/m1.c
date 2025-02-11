@@ -140,7 +140,7 @@ int main()
 
   if (result == 0)
   {
-    printf("\nresult:\nSuspicious value found. This may be a virtual machine.\n");
+    printf("\nresult:\nTHIS IS A VIRTUAL MACHINE\n");
   }
   else
   {
