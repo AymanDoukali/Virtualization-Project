@@ -45,7 +45,7 @@ The project provides an automated framework to evaluate different virtualization
 1. **Clone the Repository**
 
    ```bash
-   git clone https://your-repository-url.git
+   git clone https://github.com/AymanDoukali/Virtualization-Project.git
    cd your-repository-directory
    
 2. **Update the config.yaml file**  
