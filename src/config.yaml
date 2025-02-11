@@ -1,0 +1,70 @@
+consts:
+  DELAY: 15  # Delay (in seconds) applied after the virtual machine has started
+
+# Logging configuration
+version: 1
+
+formatters:
+  simple:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG  # Logging level threshold for console output
+    formatter: simple
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.FileHandler
+    level: INFO  # Logging level threshold for file output
+    formatter: simple
+    filename: app.log
+
+loggers:
+  test_logger:
+    level: DEBUG
+    handlers: [console, file]
+
+# File paths configuration
+paths:
+  EXE_PATH: "./src/exe/" # Do not change this path!
+  VBOXMANAGE_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe"  # Default VirtualBox installation path; adjust if necessary
+  VMRUN_PATH: "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe"  # Default VMware Workstation installation path; adjust if necessary
+
+# Configuration for installed Virtual Machines
+# Specify the operating system, administrator username, and password for each virtual machine.
+# For VMware installations, also provide the path to the corresponding .vmx file.
+vm:
+  vb:
+    # Virtual Machines installed on VirtualBox
+    name: # as figures on VirtualBox
+      os: "<os>"  # Use 'win' for Windows, 'linux' for Linux distributions, or 'mac' for macOS
+      user: "<Administrator username>"  # Administrator username
+      password: "<Administrator password>"  # Administrator password
+
+    name2:
+      os: "<os>"  # Use 'win' for Windows, 'linux' for Linux distributions, or 'mac' for macOS
+      user: "<Administrator username>"  # Administrator username
+      password: "<Administrator password>"  # Administrator password
+
+# Add as many virtual machines as you want
+
+  vmware:
+    # Virtual Machines installed on VMware
+    "name":
+      os: "<os>"  # Use 'win' for Windows, 'linux' for Linux distributions, or 'mac' for macOS
+      user: "<Administrator username>"  # Administrator username
+      password: "<Administrator password>"  # Administrator password
+      path: "<Path to the VMware virtual machine>" # the required file's extension is .vmx
+
+# Methods for testing
+# To test a method, ensure that:
+#   - The executable for the method shares the same name as the method.
+#   - The executable is located in the 'exe' directory.
+m:
+  m1: "Detect virtualization indicators in the System and BIOS sections of the Windows Registry (applicable only to Windows virtual machines)"
+  m2: "Execute the CPUID instruction to retrieve the hypervisor signature, if present"
+  m3: "Execute the CPUID instruction while excluding the Microsoft Hypervisor, which is enabled by default in recent Windows versions"
+  m4: "Benchmark the execution time of the CPUID instruction"
+  m5: "Benchmark the execution time of the GETPID call (applicable only to Linux virtual machines)"
